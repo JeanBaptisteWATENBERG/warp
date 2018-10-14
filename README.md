@@ -155,6 +155,39 @@ PS C:\Users\Diego\Devel\myapp> "{0:N2} MB" -f ((Get-Item myapp.exe).Length / 1MB
 28.51 MB
 ```
 
+## Quickstart with Node JS
+### Linux
+**Make your node js application executable**
+1. Add this line at the top of your nodejs index file :
+```
+#!/usr/bin/env node 
+```
+2. Run 
+```sh
+dgiagio@X1:~/Devel/myapp$ chmod +x index.js
+```
+**Download `warp-packer`**
+
+If you save `warp-packer` in a directory in your PATH, you only need to download it once.
+```sh
+dgiagio@X1:~/Devel/myapp$ curl -Lo warp-packer https://github.com/dgiagio/warp/releases/download/v0.1.1/linux-x64.warp-packer
+dgiagio@X1:~/Devel/myapp$ chmod +x warp-packer
+```
+**Create your self-contained application**
+
+```sh
+dgiagio@X1:~/Devel/myapp$ ./warp-packer --arch linux-x64 --input_dir . --exec index.js --output myapp
+dgiagio@X1:~/Devel/myapp$ chmod +x myapp
+```
+
+**Run your self-contained application**
+
+```sh
+dgiagio@X1:~/Devel/myapp$ ./myapp
+Hello World!
+dgiagio@X1:~/Devel/myapp$
+```
+
 ## Quickstart with Java
 _In progress_
 
